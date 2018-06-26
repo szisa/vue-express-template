@@ -1,0 +1,18 @@
+{
+    "base": {
+        "upload": "/public/upload/",
+        "fileurl": "upload/",
+        "port": 6789,
+        "domain": "http://domain.com",
+        "cookie_domain": "domain.com",
+        "suffix": ".htm",
+        "identityKey": "_YOUR_SESSION_ID_Wew24dB1pbnPNlf",
+        "secret": "HkSuvh1TVH4Uc",
+        "salt": "00622432-5249-4939-82f4-2249dfbcae90"
+    },
+    "error": {
+    },
+    "web": {
+        "name": "Express-Vue 模板"
+    }
+}
