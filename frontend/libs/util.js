@@ -6,7 +6,7 @@ let util = {
 
 };
 util.title = function(title) {
-    title = title ? title + ' - 自考英语查询' : '自考英语查询';
+    title = title ? title + ' - ' + config.web.name: config.web.name;
     window.document.title = title;
 };
 

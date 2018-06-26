@@ -129,7 +129,7 @@
         <Layout class="layout-main" :class="collapsed">
             <Header class="layout-header">
                 <div class="layout-logo">
-                    <img src="../assets/logo.svg" alt="自考英语查询" />
+                    <img src="../assets/logo.svg" alt="logo"/>
                 </div>
             </Header>
             <Content :style="{padding: '15px 15px'}">
