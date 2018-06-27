@@ -1,4 +1,4 @@
-# express-vue 开发模板
+# express-vue 开发模板 (含 iView)
 这是一个基于 Vue.js 与 Node Express 框架的一体化开发模板，主要解决前后端联合调试问题与部署问题。利用 Express 静态文件服务作为前端编译输出，进而解决部署前端需要 Web 服务器与前后端代码分开部署问题。
 
 ## 目录说明

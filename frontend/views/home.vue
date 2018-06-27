@@ -5,9 +5,9 @@
 }
 </style>
 <template>
-    <section class="home">
+    <Layout class="home">
         The Home Page
-    </section>
+    </Layout>
 </template>
 <script>
     import Util from '../libs/util';
@@ -21,7 +21,7 @@
         },
         data() {
             return {
-            }
+            };
         }
     };
 </script>

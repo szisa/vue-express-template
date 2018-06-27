@@ -28,8 +28,18 @@ module.exports = {
                                 })
                             }
                         }
+                    },
+                    {
+                        loader: 'iview-loader',
+                        options: {
+                            prefix: false
+                        }
                     }
                 ]
+            },
+            {
+                test: /iview\/.*?js$/,
+                loader: 'babel-loader'
             },
             {
                 test: /\.js$/,
