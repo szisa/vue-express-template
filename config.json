@@ -1,7 +1,5 @@
 {
     "base": {
-        "upload": "/public/upload/",
-        "fileurl": "upload/",
         "port": 6789,
         "domain": "http://domain.com",
         "cookie_domain": "domain.com",
@@ -14,5 +12,10 @@
     },
     "web": {
         "name": "Express-Vue 模板"
+    },
+    "file": {
+        "upload": "/public/upload/",
+        "fileurl": "upload/",
+        "maxSize": 5
     }
 }
