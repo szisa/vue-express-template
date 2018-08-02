@@ -8,7 +8,7 @@ C. fontend - 前端代码
 D. lib - 公共类库  
 E. pubilc - 静态资源  
 F. routes - 服务路由  
-G. view - 视图 
+G. view - 视图  
 H. script - 脚本  
 
 # 数据库部署说明

@@ -13,10 +13,10 @@ router.all('*', function (req, res, next) {
     next();
 });
 
+// 在此加入
 router.use(require('./access'));
-router.use('/eng', loader(modules.eng));
+router.use('/lib', require('./lib'));
 router.use('/account', loader(modules.account));
-router.use('/notes', loader(modules.notes));
 
 router.get('/', function (req, res) {
     res.render('index', { title: 'API' });
