@@ -17,5 +17,12 @@
         "upload": "/public/upload/",
         "fileurl": "upload/",
         "maxSize": 5
+    },
+    "db": {
+        "database": "db",
+        "dialect": "mysql",
+        "prefix": "pre_",
+        "port": 3306,
+        "logging": true
     }
 }
