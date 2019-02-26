@@ -11,7 +11,23 @@ let orm = {
     },
     passwd: {
         type: db.STRING(64),
-        comment: '密码',
+        comment: '密码'
+    },
+    email: {
+        type: db.STRING(100),
+        comment: '邮箱'
+    },
+    phone: {
+        type: db.STRING(20),
+        comment: '手机'
+    },
+    motto: {
+        type: db.STRING(200),
+        comment: '签名'
+    },
+    avatar: {
+        type: db.STRING(200),
+        comment: '头像'
     },
     lastlogin: {
         type: db.INTEGER,
@@ -20,7 +36,7 @@ let orm = {
 };
 let table_name = prefix + 'account';
 module.exports = db.defineModel(table_name, orm, {
-    comment: '帐号表',
+    comment: '用户表',
 });
 module.exports.db = db;
 module.exports.tb = table_name;
