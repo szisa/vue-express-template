@@ -102,7 +102,8 @@ class App {
         try {
             if (unique) {
                 let where = {};
-                where[unique] = data[unique];
+                if (typeof unique === 'string') where[unique] = data[unique];
+                else if (unique instanceof Array) unique.forEach(u => where[u] = data[u]);
                 let record = await Model.findOne({
                     where: where
                 });
@@ -124,7 +125,7 @@ class App {
     }
 
     // 通用更新接口
-    async set(data, Model, preUpdate = function () { }, unique = 'id') {
+    async set(data, Model, preUpdate = null, unique = 'id') {
         let keys = Model.keys();
         keys = ['id'].concat(keys).concat(['create_time', 'update_time']);
 
@@ -145,13 +146,15 @@ class App {
                 throw (App.error.existed(this.name, false));
             }
 
-            preUpdate(record);
+            if (!preUpdate || preUpdate(record)) {
+                data[unique] = undefined;
+                record = App.update(record, data, keys);
+                await record.save();
 
-            data[unique] = undefined;
-            record = App.update(record, data, keys);
-            await record.save();
-
-            return App.filter(record, keys);
+                return App.filter(record, keys);
+            } else {
+                throw App.error.limited;
+            }
         } catch (err) {
             if (err.isdefine) throw (err);
             throw (this.error.db(err));
@@ -159,7 +162,7 @@ class App {
     }
 
     // 通用删除接口
-    async del(data, Model, unique = 'id') {
+    async del(data, Model, preDelete = null, unique = 'id') {
         let keys = [unique];
 
         if (!App.haskeys(data, keys)) {
@@ -179,8 +182,13 @@ class App {
                 throw (App.error.existed(this.name, false));
             }
 
-            await record.destroy();
-            return record;
+            if (!preDelete || preDelete(record)) {
+                await record.destroy();
+                return record;
+            } else if (preDelete) {
+                throw App.error.limited;
+            }
+
         } catch (err) {
             if (err.isdefine) throw (err);
             throw (this.error.db(err));
@@ -211,6 +219,16 @@ class App {
                 return false;
         }
         return true;
+    }
+
+    // 检查对象数据，至少包含检查
+    static hasone(data, keys) {
+        if (!data) return false;
+        for (let i = 0; i < keys.length; i++) {
+            if (undefined !== data[keys[i]]) 
+                return true;
+        }
+        return false;
     }
 
     // 检查对象数据，仅包含检查
